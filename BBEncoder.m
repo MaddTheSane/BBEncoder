@@ -119,8 +119,9 @@
 				NSParagraphStyle *paragraphStyle = (NSParagraphStyle *)value;
 				switch ([paragraphStyle alignment]) {
 					case NSLeftTextAlignment:
-						[output appendFormat:@"[%@]", BBTAG_LEFT];
-						[tags addObject:BBTAG_LEFT];
+						//TODO: check the language for RTL languages and code accordingly.
+						//[output appendFormat:@"[%@]", BBTAG_LEFT];
+						//[tags addObject:BBTAG_LEFT];
 						break;
 					case NSRightTextAlignment:
 						[output appendFormat:@"[%@]", BBTAG_RIGHT];
