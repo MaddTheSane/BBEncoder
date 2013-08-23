@@ -69,6 +69,17 @@ typedef NSUInteger BBInput;
 	self.bbcode = [self.inputString bbcodeRepresentationWithOptions:options];
 }
 
+- (void)replaceSelected:(NSPasteboard*)pboard userData:(NSString *)userData error:(NSString **)error
+{
+	
+}
+
+- (void)convertSelected:(NSPasteboard*)pboard userData:(NSString *)userData error:(NSString **)error
+{
+	
+}
+
+
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
 {
 	return YES;

@@ -26,5 +26,44 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>BBEncoder/Replace with BBCode</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>replaceSelected</string>
+			<key>NSPortName</key>
+			<string>BBEncoder</string>
+			<key>NSReturnTypes</key>
+			<array>
+				<string>public.utf8-plain-text</string>
+			</array>
+			<key>NSSendFileTypes</key>
+			<array>
+				<string>public.rtf</string>
+				<string>public.html</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>BBEncoder/Convert to BBCode</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>convertSelected</string>
+			<key>NSPortName</key>
+			<string>BBEncoder</string>
+			<key>NSSendFileTypes</key>
+			<array>
+				<string>public.rtf</string>
+				<string>public.html</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
