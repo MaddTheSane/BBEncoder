@@ -9,9 +9,7 @@
 #import "BBEncoder.h"
 
 @interface NSColor (BBEncoder)
-
 - (NSString *)bbcodeRepresentation;
-
 @end
 
 @implementation NSColor (BBEncoder)
@@ -27,9 +25,7 @@
 @end
 
 @interface NSFont (BBEncoder)
-
 - (int)bbcodeSize;
-
 @end
 
 @implementation NSFont (BBEncoder)
@@ -106,8 +102,8 @@
 					[tags addObject:BBTAG_ITALICS];
 				}
 				int bbcodeSize = [font bbcodeSize];
-				if (bbcodeSize != BBSIZE_DEFAULT) {
-					[output appendFormat:@"[%@=%d]", BBTAG_SIZE, bbcodeSize];
+				if ((bbcodeSize != BBSIZE_DEFAULT) && (options & BBEncoderUseFontSizes)) {
+					[output appendFormat:@"[%@=%d]", BBTAG_SIZE, (options & BBEncoderUsePointFontSizes) ? (int)[font pointSize] : bbcodeSize];
 					[tags addObject:BBTAG_SIZE];
 				}
 			} else if ([attributeName isEqualToString:NSUnderlineStyleAttributeName]) {

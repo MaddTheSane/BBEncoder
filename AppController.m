@@ -9,6 +9,8 @@
 #define PREFS_ENCLOSE_IN_CODE_TAGS		@"EncloseInCodeTags"
 #define PREFS_REPLACE_TABS_WITHS_SPACES	@"ReplaceTabsWithSpaces"
 #define PREFS_USE_STRIKE_FULL_WORD		@"UseStrikeFullWord"
+#define PREFS_USE_SIZE					@"UseSize"
+#define PREFS_USE_POINT_SIZE			@"UsePointSize"
 
 enum {
 	BBInputFormatted,
@@ -23,9 +25,11 @@ typedef NSUInteger BBInput;
 + (void)initialize
 {
 	NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:
-							  [NSNumber numberWithBool:YES], PREFS_ENCLOSE_IN_CODE_TAGS,
-							  [NSNumber numberWithBool:YES], PREFS_REPLACE_TABS_WITHS_SPACES,
-							  [NSNumber numberWithBool:YES], PREFS_USE_STRIKE_FULL_WORD,
+							  @YES, PREFS_ENCLOSE_IN_CODE_TAGS,
+							  @YES, PREFS_REPLACE_TABS_WITHS_SPACES,
+							  @YES, PREFS_USE_STRIKE_FULL_WORD,
+							  @YES, PREFS_USE_SIZE,
+							  @NO, PREFS_USE_POINT_SIZE,
 							  nil];
 	[[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaults];
 }
@@ -37,6 +41,8 @@ typedef NSUInteger BBInput;
 	[userDefaultsController addObserver:self forKeyPath:@"values."PREFS_ENCLOSE_IN_CODE_TAGS options:0 context:NULL];
 	[userDefaultsController addObserver:self forKeyPath:@"values."PREFS_REPLACE_TABS_WITHS_SPACES options:0 context:NULL];
 	[userDefaultsController addObserver:self forKeyPath:@"values."PREFS_USE_STRIKE_FULL_WORD options:0 context:NULL];
+	[userDefaultsController addObserver:self forKeyPath:@"values."PREFS_USE_SIZE options:0 context:NULL];
+	[userDefaultsController addObserver:self forKeyPath:@"values."PREFS_USE_POINT_SIZE options:0 context:NULL];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -52,6 +58,14 @@ typedef NSUInteger BBInput;
 	if ([[values valueForKey:PREFS_USE_STRIKE_FULL_WORD] boolValue]) {
 		options |= BBEncoderUseStrikeFullWord;
 	}
+	if ([[values valueForKey:PREFS_USE_SIZE] boolValue]) {
+		options |= BBEncoderUseFontSizes;
+	}
+	if ([[values valueForKey:PREFS_USE_POINT_SIZE] boolValue]) {
+		options |= 	BBEncoderUsePointFontSizes;
+	}
+
+	
 	self.bbcode = [self.inputString bbcodeRepresentationWithOptions:options];
 }
 

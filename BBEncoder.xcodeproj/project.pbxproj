@@ -35,7 +35,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				55DBFC1416331E9700FF978A /* Cocoa.framework in Frameworks */,
+				55518833162FB48E00B88259 /* AppKit.framework in Frameworks */,
+				55518834162FB49100B88259 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +97,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				55DBFC1316331E9700FF978A /* Cocoa.framework */,
+				555F3980162FA9E70030FFC2 /* AppKit.framework */,
+				555F3981162FA9E70030FFC2 /* CoreFoundation.framework */,
+				555F3982162FA9E70030FFC2 /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,6 +131,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BBEncoder" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
