@@ -37,6 +37,7 @@ typedef NSUInteger BBInput;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notif
 {
+	[[NSApplication sharedApplication] setServicesProvider:self];
 	[self addObserver:self forKeyPath:@"inputString" options:0 context:NULL];
 	NSUserDefaultsController *userDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 	[userDefaultsController addObserver:self forKeyPath:@"values."PREFS_ENCLOSE_IN_CODE_TAGS options:0 context:NULL];
@@ -112,7 +113,7 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 	NSString *theString = ConvertFromPasteboard(pboard, error);
 	if (theString) {
 		[pboard clearContents];
-		[pboard setString:theString forType:NSPasteboardTypeString];
+		[pboard writeObjects:@[theString]];
 	}
 }
 
@@ -122,7 +123,7 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 	if (theString) {
 		NSPasteboard *tmpPaste = [NSPasteboard generalPasteboard];
 		[tmpPaste clearContents];
-		[tmpPaste setString:theString forType:NSPasteboardTypeString];
+		[tmpPaste writeObjects:@[theString]];
 		//NSBeginAlertSheet(@"BBCode in Pasteboard", nil, nil, nil, window, nil, NULL, NULL, NULL, @"The selected");
 	}
 }

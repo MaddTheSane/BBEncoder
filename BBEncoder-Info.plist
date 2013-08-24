@@ -33,6 +33,8 @@
 	<key>NSServices</key>
 	<array>
 		<dict>
+			<key>NSExecutable</key>
+			<string>BBEncoder</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
@@ -44,15 +46,20 @@
 			<string>BBEncoder</string>
 			<key>NSReturnTypes</key>
 			<array>
-				<string>public.utf8-plain-text</string>
+				<string>NSStringPboardType</string>
 			</array>
-			<key>NSSendFileTypes</key>
+			<key>NSSendTypes</key>
 			<array>
-				<string>public.rtf</string>
-				<string>public.html</string>
+				<string>NSStringPboardType</string>
+				<string>NSRTFPboardType</string>
+				<string>NSHTMLPboardType</string>
 			</array>
+			<key>NSServiceDescription</key>
+			<string>Replace the selected formatted text to its BBCode counterpart.</string>
 		</dict>
 		<dict>
+			<key>NSExecutable</key>
+			<string>BBEncoder</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
@@ -62,11 +69,14 @@
 			<string>convertSelected</string>
 			<key>NSPortName</key>
 			<string>BBEncoder</string>
-			<key>NSSendFileTypes</key>
+			<key>NSSendTypes</key>
 			<array>
-				<string>public.rtf</string>
-				<string>public.html</string>
+				<string>NSStringPboardType</string>
+				<string>NSRTFPboardType</string>
+				<string>NSHTMLPboardType</string>
 			</array>
+			<key>NSServiceDescription</key>
+			<string>Places the selected formatted text&apos;s BBCode implementation to the default clipboard.</string>
 		</dict>
 	</array>
 </dict>
