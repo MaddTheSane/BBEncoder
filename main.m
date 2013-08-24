@@ -3,7 +3,7 @@
 //  BBEncoder
 //
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/NSApplication.h>
 
 int main(int argc, char *argv[])
 {

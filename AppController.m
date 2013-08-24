@@ -25,14 +25,14 @@ typedef NSUInteger BBInput;
 
 + (void)initialize
 {
-	NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:
-							  @YES, PREFS_ENCLOSE_IN_CODE_TAGS,
-							  @YES, PREFS_REPLACE_TABS_WITHS_SPACES,
-							  @YES, PREFS_USE_STRIKE_FULL_WORD,
-							  @YES, PREFS_USE_SIZE,
-							  @NO, PREFS_USE_POINT_SIZE,
-							  nil];
-	[[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaults];
+	[[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:
+	 [NSDictionary dictionaryWithObjectsAndKeys:
+	  @YES, PREFS_ENCLOSE_IN_CODE_TAGS,
+	  @YES, PREFS_REPLACE_TABS_WITHS_SPACES,
+	  @YES, PREFS_USE_STRIKE_FULL_WORD,
+	  @YES, PREFS_USE_SIZE,
+	  @NO, PREFS_USE_POINT_SIZE,
+	  nil]];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notif
@@ -65,7 +65,6 @@ typedef NSUInteger BBInput;
 	if ([[values valueForKey:PREFS_USE_POINT_SIZE] boolValue]) {
 		options |= 	BBEncoderUsePointFontSizes;
 	}
-
 	
 	self.bbcode = [self.inputString bbcodeRepresentationWithOptions:options];
 }
@@ -78,11 +77,12 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 		attrStr = [[NSAttributedString alloc] initWithRTF:[pboard dataForType:NSPasteboardTypeRTF] documentAttributes:NULL];
 	} else if ([types containsObject:NSPasteboardTypeHTML]) {
 		attrStr = [[NSAttributedString alloc] initWithHTML:[pboard dataForType:NSPasteboardTypeHTML] documentAttributes:NULL];
+	} else if ([types containsObject:NSPasteboardTypeString]){
+		return [pboard stringForType:NSPasteboardTypeString];
 	} else {
 		if (error) {
 			*error = @"Incompatible pasteboard sent";
 		}
-		
 		return nil;
 	}
 	
@@ -123,6 +123,7 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 		NSPasteboard *tmpPaste = [NSPasteboard generalPasteboard];
 		[tmpPaste clearContents];
 		[tmpPaste setString:theString forType:NSPasteboardTypeString];
+		//NSBeginAlertSheet(@"BBCode in Pasteboard", nil, nil, nil, window, nil, NULL, NULL, NULL, @"The selected");
 	}
 }
 

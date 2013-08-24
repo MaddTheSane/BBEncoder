@@ -10,6 +10,7 @@
 {
 	NSAttributedString *inputString;
 	NSString *bbcode;
+	IBOutlet NSWindow *window;
 }
 
 @property (readwrite, retain) NSAttributedString *inputString;

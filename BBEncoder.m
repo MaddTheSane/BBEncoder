@@ -13,6 +13,10 @@
 - (NSString *)bbcodeRepresentation;
 @end
 
+@interface NSFont (BBEncoder)
+- (int)bbcodeSize;
+@end
+
 @implementation NSColor (BBEncoder)
 
 - (NSString *)bbcodeRepresentation
@@ -23,10 +27,6 @@
 	return [NSString stringWithFormat:@"#%02x%02x%02x", (uint8_t)(r * 255), (uint8_t)(g * 255), (uint8_t)(b * 255)];
 }
 
-@end
-
-@interface NSFont (BBEncoder)
-- (int)bbcodeSize;
 @end
 
 @implementation NSFont (BBEncoder)
@@ -62,17 +62,23 @@
 
 @implementation NSAttributedString (BBEncoder)
 
-#define BBTAG_BOLD		@"b"
-#define BBTAG_UNDERLINE	@"u"
-#define BBTAG_ITALICS	@"i"
-#define BBTAG_COLOR		@"color"
-#define BBTAG_URL		@"url"
-#define BBTAG_LEFT		@"left"
-#define BBTAG_RIGHT		@"right"
-#define BBTAG_CENTER	@"center"
-#define BBTAG_SIZE		@"size"
+#define BBTAG_BOLD			@"b"
+#define BBTAG_UNDERLINE		@"u"
+#define BBTAG_ITALICS		@"i"
+#define BBTAG_COLOR			@"color"
+#define BBTAG_URL			@"url"
+#define BBTAG_LEFT			@"left"
+#define BBTAG_RIGHT			@"right"
+#define BBTAG_CENTER		@"center"
+#define BBTAG_SIZE			@"size"
 #define BBTAG_STRIKE		@"s"
 #define BBTAG_STRIKE_FULL	@"strike"
+
+- (NSString *)bbcodeRepresentation
+{
+	//return [self bbcodeRepresentationWithOptions:(BBEncoderEncloseInCodeTags | BBEncoderReplaceTabsWithSpaces |BBEncoderUseStrikeFullWord |  BBEncoderUseFontSizes)];
+	return [self bbcodeRepresentationWithOptions:15];
+}
 
 - (NSString *)bbcodeRepresentationWithOptions:(BBEncoderOptions)options
 {
