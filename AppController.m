@@ -113,6 +113,8 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 	NSString *theString = ConvertFromPasteboard(pboard, error);
 	if (theString) {
 		[pboard clearContents];
+		//[pboard declareTypes:@[NSStringPboardType] owner:nil];
+		//[pboard setString:theString forType:NSStringPboardType];
 		[pboard writeObjects:@[theString]];
 	}
 }
@@ -124,7 +126,7 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 		NSPasteboard *tmpPaste = [NSPasteboard generalPasteboard];
 		[tmpPaste clearContents];
 		[tmpPaste writeObjects:@[theString]];
-		//NSBeginAlertSheet(@"BBCode in Pasteboard", nil, nil, nil, window, nil, NULL, NULL, NULL, @"The selected");
+		//NSBeginAlertSheet(@"BBCode in Pasteboard", nil, nil, nil, window, nil, NULL, NULL, NULL, @"The selected text has been copied to the pasteboard.");
 	}
 }
 
