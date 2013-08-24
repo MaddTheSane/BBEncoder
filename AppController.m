@@ -5,6 +5,7 @@
 
 #import "AppController.h"
 #import "BBEncoder.h"
+#import "ARCBridge.h"
 
 #define PREFS_ENCLOSE_IN_CODE_TAGS		@"EncloseInCodeTags"
 #define PREFS_REPLACE_TABS_WITHS_SPACES	@"ReplaceTabsWithSpaces"
@@ -103,7 +104,7 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 		options |= 	BBEncoderUsePointFontSizes;
 	}
 
-	return [[attrStr autorelease] bbcodeRepresentationWithOptions:options];
+	return [AUTORELEASEOBJ(attrStr) bbcodeRepresentationWithOptions:options];
 }
 
 - (void)replaceSelected:(NSPasteboard*)pboard userData:(NSString *)userData error:(NSString **)error

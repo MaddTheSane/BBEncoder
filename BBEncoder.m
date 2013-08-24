@@ -7,6 +7,7 @@
 //  See included LICENSE.txt.
 
 #import "BBEncoder.h"
+#import "ARCBridge.h"
 
 @interface NSColor (BBEncoder)
 - (NSString *)bbcodeRepresentation;
@@ -37,9 +38,9 @@
 	// Find the closest BBCode SIZE that corresponds to the NSFont's pointSize value.
 	// Most forums only support SIZE = 1 - 7, where 2 is the default value. The values
 	// in sizeTable are the point sizes that Safari 5 uses for SIZE = 1 - 7.
-	const int sizeTable[] = {10, 13, 16, 18, 24, 32, 48};
+	static const int sizeTable[] = {10, 13, 16, 18, 24, 32, 48};
 	const int pointSize = (int)[self pointSize];
-	const int numSizes =  sizeof(sizeTable) / sizeof(sizeTable[0]);
+	static const int numSizes =  sizeof(sizeTable) / sizeof(sizeTable[0]);
 	for (int i=0; i<numSizes; i++) {
 		int isLast = (i == numSizes - 1);
 		if (pointSize <= sizeTable[i]) {
@@ -75,90 +76,91 @@
 
 - (NSString *)bbcodeRepresentationWithOptions:(BBEncoderOptions)options
 {
-	NSMutableString *output = [NSMutableString string];
-
-	NSRange maxRange = NSMakeRange(0, [self length]);
-	NSRange range = NSMakeRange(0, 0);
-	NSDictionary *attrs = nil;
-	
-	if (maxRange.length == 0 || maxRange.location == NSNotFound) {
-		return nil;
-	}
-	
-	do {
-		attrs = [self attributesAtIndex:NSMaxRange(range) longestEffectiveRange:&range inRange:maxRange];
-		NSMutableArray *tags = [NSMutableArray array];
-		for (NSString *attributeName in attrs) {
-			id value = [attrs objectForKey:attributeName];
-			if ([attributeName isEqualToString:NSFontAttributeName]) {
-				NSFont *font = (NSFont *)value;
-				NSFontTraitMask traits = [[NSFontManager sharedFontManager] traitsOfFont:font];
-				if (traits & NSBoldFontMask) {
-					[output appendFormat:@"[%@]", BBTAG_BOLD];
-					[tags addObject:BBTAG_BOLD];
-				}
-				if (traits & NSItalicFontMask) {
-					[output appendFormat:@"[%@]", BBTAG_ITALICS];
-					[tags addObject:BBTAG_ITALICS];
-				}
-				int bbcodeSize = [font bbcodeSize];
-				if ((bbcodeSize != BBSIZE_DEFAULT) && (options & BBEncoderUseFontSizes)) {
-					[output appendFormat:@"[%@=%d]", BBTAG_SIZE, (options & BBEncoderUsePointFontSizes) ? (int)[font pointSize] : bbcodeSize];
-					[tags addObject:BBTAG_SIZE];
-				}
-			} else if ([attributeName isEqualToString:NSUnderlineStyleAttributeName]) {
-				[output appendFormat:@"[%@]", BBTAG_UNDERLINE];
-				[tags addObject:BBTAG_UNDERLINE];
-			} else if ([attributeName isEqualToString:NSForegroundColorAttributeName]) {
-				[output appendFormat:@"[%@=%@]", BBTAG_COLOR, [(NSColor *)value bbcodeRepresentation]];
-				[tags addObject:BBTAG_COLOR];
-			} else if ([attributeName isEqualToString:NSLinkAttributeName]) {
-				[output appendFormat:@"[%@=%@]", BBTAG_URL, [(NSURL *)value absoluteString]];
-				[tags addObject:BBTAG_URL];
-			} else if ([attributeName isEqualToString:NSParagraphStyleAttributeName]) {
-				NSParagraphStyle *paragraphStyle = (NSParagraphStyle *)value;
-				switch ([paragraphStyle alignment]) {
-					case NSLeftTextAlignment:
-						//TODO: check the language for RTL languages and code accordingly.
-						//[output appendFormat:@"[%@]", BBTAG_LEFT];
-						//[tags addObject:BBTAG_LEFT];
-						break;
-					case NSRightTextAlignment:
-						[output appendFormat:@"[%@]", BBTAG_RIGHT];
-						[tags addObject:BBTAG_RIGHT];
-						break;
-					case NSCenterTextAlignment:
-						[output appendFormat:@"[%@]", BBTAG_CENTER];
-						[tags addObject:BBTAG_CENTER];
-						break;
-				}
-			} else if ([attributeName isEqualToString:NSStrikethroughStyleAttributeName]) {
-				NSNumber *strikeNum = (NSNumber *)value;
-				if ([strikeNum intValue] > 0) {
-					NSString *strikeTag = options & BBEncoderUseStrikeFullWord ? BBTAG_STRIKE_FULL : BBTAG_STRIKE;
-					[output appendFormat:@"[%@]", strikeTag];
-					[tags addObject:strikeTag];
+	NSMutableString *output = [[NSMutableString alloc] initWithCapacity:self.string.length];
+	@autoreleasepool {
+		NSRange maxRange = NSMakeRange(0, [self length]);
+		NSRange range = NSMakeRange(0, 0);
+		NSDictionary *attrs = nil;
+		
+		if (maxRange.length == 0 || maxRange.location == NSNotFound) {
+			return nil;
+		}
+		
+		do {
+			attrs = [self attributesAtIndex:NSMaxRange(range) longestEffectiveRange:&range inRange:maxRange];
+			NSMutableArray *tags = [[NSMutableArray alloc] initWithCapacity:[attrs count]];
+			for (NSString *attributeName in attrs) {
+				id value = [attrs objectForKey:attributeName];
+				if ([attributeName isEqualToString:NSFontAttributeName]) {
+					NSFont *font = (NSFont *)value;
+					NSFontTraitMask traits = [[NSFontManager sharedFontManager] traitsOfFont:font];
+					if (traits & NSBoldFontMask) {
+						[output appendFormat:@"[%@]", BBTAG_BOLD];
+						[tags addObject:BBTAG_BOLD];
+					}
+					if (traits & NSItalicFontMask) {
+						[output appendFormat:@"[%@]", BBTAG_ITALICS];
+						[tags addObject:BBTAG_ITALICS];
+					}
+					int bbcodeSize = [font bbcodeSize];
+					if ((bbcodeSize != BBSIZE_DEFAULT) && (options & BBEncoderUseFontSizes)) {
+						[output appendFormat:@"[%@=%d]", BBTAG_SIZE, (options & BBEncoderUsePointFontSizes) ? (int)[font pointSize] : bbcodeSize];
+						[tags addObject:BBTAG_SIZE];
+					}
+				} else if ([attributeName isEqualToString:NSUnderlineStyleAttributeName]) {
+					[output appendFormat:@"[%@]", BBTAG_UNDERLINE];
+					[tags addObject:BBTAG_UNDERLINE];
+				} else if ([attributeName isEqualToString:NSForegroundColorAttributeName]) {
+					[output appendFormat:@"[%@=%@]", BBTAG_COLOR, [(NSColor *)value bbcodeRepresentation]];
+					[tags addObject:BBTAG_COLOR];
+				} else if ([attributeName isEqualToString:NSLinkAttributeName]) {
+					[output appendFormat:@"[%@=%@]", BBTAG_URL, [(NSURL *)value absoluteString]];
+					[tags addObject:BBTAG_URL];
+				} else if ([attributeName isEqualToString:NSParagraphStyleAttributeName]) {
+					NSParagraphStyle *paragraphStyle = (NSParagraphStyle *)value;
+					switch ([paragraphStyle alignment]) {
+						case NSLeftTextAlignment:
+							//TODO: check the language for RTL languages and code accordingly.
+							//[output appendFormat:@"[%@]", BBTAG_LEFT];
+							//[tags addObject:BBTAG_LEFT];
+							break;
+						case NSRightTextAlignment:
+							[output appendFormat:@"[%@]", BBTAG_RIGHT];
+							[tags addObject:BBTAG_RIGHT];
+							break;
+						case NSCenterTextAlignment:
+							[output appendFormat:@"[%@]", BBTAG_CENTER];
+							[tags addObject:BBTAG_CENTER];
+							break;
+					}
+				} else if ([attributeName isEqualToString:NSStrikethroughStyleAttributeName]) {
+					NSNumber *strikeNum = (NSNumber *)value;
+					if ([strikeNum intValue] > 0) {
+						NSString *strikeTag = options & BBEncoderUseStrikeFullWord ? BBTAG_STRIKE_FULL : BBTAG_STRIKE;
+						[output appendFormat:@"[%@]", strikeTag];
+						[tags addObject:strikeTag];
+					}
 				}
 			}
+			
+			[output appendString:[[self string] substringWithRange:range]];
+			
+			for (NSString *tag in [tags reverseObjectEnumerator]) {
+				[output appendFormat:@"[/%@]", tag];
+			}
+			RELEASEOBJ(tags);
+		} while (NSMaxRange(range) < maxRange.location + maxRange.length);
+		
+		if (options & BBEncoderReplaceTabsWithSpaces) {
+			[output replaceOccurrencesOfString:@"\t" withString:@"    " options:0 range:NSMakeRange(0, [output length])];
 		}
 		
-		[output appendString:[[self string] substringWithRange:range]];
-		
-		for (NSString *tag in [tags reverseObjectEnumerator]) {
-			[output appendFormat:@"[/%@]", tag];
+		if (options & BBEncoderEncloseInCodeTags) {
+			[output insertString:@"[code]" atIndex:0];
+			[output insertString:@"[/code]" atIndex:[output length]];
 		}
-	} while (NSMaxRange(range) < maxRange.location + maxRange.length);
-	
-	if (options & BBEncoderReplaceTabsWithSpaces) {
-		[output replaceOccurrencesOfString:@"\t" withString:@"    " options:0 range:NSMakeRange(0, [output length])];
 	}
-	
-	if (options & BBEncoderEncloseInCodeTags) {
-		[output insertString:@"[code]" atIndex:0];
-		[output insertString:@"[/code]" atIndex:[output length]];
-	}
-	
-	return output;
+	return AUTORELEASEOBJ(output);
 }
 
 @end
