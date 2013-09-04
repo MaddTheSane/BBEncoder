@@ -50,7 +50,6 @@
 			</array>
 			<key>NSSendTypes</key>
 			<array>
-				<string>NSStringPboardType</string>
 				<string>NSRTFPboardType</string>
 				<string>NSHTMLPboardType</string>
 			</array>
@@ -71,7 +70,6 @@
 			<string>BBEncoder</string>
 			<key>NSSendTypes</key>
 			<array>
-				<string>NSStringPboardType</string>
 				<string>NSRTFPboardType</string>
 				<string>NSHTMLPboardType</string>
 			</array>
