@@ -19,9 +19,32 @@ enum {
 };
 typedef NSUInteger BBInput;
 
+static BBEncoderOptions GetBBEncoderDefaults()
+{
+	BBEncoderOptions options = 0;
+	id values = [[NSUserDefaultsController sharedUserDefaultsController] values];
+	if ([[values valueForKey:PREFS_ENCLOSE_IN_CODE_TAGS] boolValue]) {
+		options |= BBEncoderEncloseInCodeTags;
+	}
+	if ([[values valueForKey:PREFS_REPLACE_TABS_WITHS_SPACES] boolValue]) {
+		options |= BBEncoderReplaceTabsWithSpaces;
+	}
+	if ([[values valueForKey:PREFS_USE_STRIKE_FULL_WORD] boolValue]) {
+		options |= BBEncoderUseStrikeFullWord;
+	}
+	if ([[values valueForKey:PREFS_USE_SIZE] boolValue]) {
+		options |= BBEncoderUseFontSizes;
+	}
+	if ([[values valueForKey:PREFS_USE_POINT_SIZE] boolValue]) {
+		options |= 	BBEncoderUsePointFontSizes;
+	}
+	return options;
+}
+
 @implementation AppController
 
-@synthesize inputString, bbcode;
+@synthesize inputString;
+@synthesize bbcode;
 
 + (void)initialize
 {
@@ -48,26 +71,8 @@ typedef NSUInteger BBInput;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	BBEncoderOptions options = 0;
-	id values = [[NSUserDefaultsController sharedUserDefaultsController] values];
-	if ([[values valueForKey:PREFS_ENCLOSE_IN_CODE_TAGS] boolValue]) {
-		options |= BBEncoderEncloseInCodeTags;
-	}
-	if ([[values valueForKey:PREFS_REPLACE_TABS_WITHS_SPACES] boolValue]) {
-		options |= BBEncoderReplaceTabsWithSpaces;
-	}
-	if ([[values valueForKey:PREFS_USE_STRIKE_FULL_WORD] boolValue]) {
-		options |= BBEncoderUseStrikeFullWord;
-	}
-	if ([[values valueForKey:PREFS_USE_SIZE] boolValue]) {
-		options |= BBEncoderUseFontSizes;
-	}
-	if ([[values valueForKey:PREFS_USE_POINT_SIZE] boolValue]) {
-		options |= 	BBEncoderUsePointFontSizes;
-	}
-	
-	self.bbcode = [self.inputString bbcodeRepresentationWithOptions:options];
+{	
+	self.bbcode = [self.inputString bbcodeRepresentationWithOptions:GetBBEncoderDefaults()];
 }
 
 static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
@@ -87,25 +92,8 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 		return nil;
 	}
 	
-	BBEncoderOptions options = 0;
-	id values = [[NSUserDefaultsController sharedUserDefaultsController] values];
-	if ([[values valueForKey:PREFS_ENCLOSE_IN_CODE_TAGS] boolValue]) {
-		options |= BBEncoderEncloseInCodeTags;
-	}
-	if ([[values valueForKey:PREFS_REPLACE_TABS_WITHS_SPACES] boolValue]) {
-		options |= BBEncoderReplaceTabsWithSpaces;
-	}
-	if ([[values valueForKey:PREFS_USE_STRIKE_FULL_WORD] boolValue]) {
-		options |= BBEncoderUseStrikeFullWord;
-	}
-	if ([[values valueForKey:PREFS_USE_SIZE] boolValue]) {
-		options |= BBEncoderUseFontSizes;
-	}
-	if ([[values valueForKey:PREFS_USE_POINT_SIZE] boolValue]) {
-		options |= 	BBEncoderUsePointFontSizes;
-	}
 
-	return [AUTORELEASEOBJ(attrStr) bbcodeRepresentationWithOptions:options];
+	return [AUTORELEASEOBJ(attrStr) bbcodeRepresentationWithOptions:GetBBEncoderDefaults()];
 }
 
 - (void)replaceSelected:(NSPasteboard*)pboard userData:(NSString *)userData error:(NSString **)error

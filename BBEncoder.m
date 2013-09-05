@@ -83,6 +83,7 @@
 - (NSString *)bbcodeRepresentationWithOptions:(BBEncoderOptions)options
 {
 	NSMutableString *output = [[NSMutableString alloc] initWithCapacity:self.string.length];
+	AUTORELEASEOBJNORETURN(output);
 	@autoreleasepool {
 		NSRange maxRange = NSMakeRange(0, [self length]);
 		NSRange range = NSMakeRange(0, 0);
@@ -166,7 +167,7 @@
 			[output insertString:@"[/code]" atIndex:[output length]];
 		}
 	}
-	return AUTORELEASEOBJ(output);
+	return [NSString stringWithString:output];
 }
 
 @end
