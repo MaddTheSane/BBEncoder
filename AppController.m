@@ -75,7 +75,13 @@ static BBEncoderOptions GetBBEncoderDefaults()
 	self.bbcode = [self.inputString bbcodeRepresentationWithOptions:GetBBEncoderDefaults()];
 }
 
+static NSString *ConvertFromPasteboardWithAttributedOut(NSPasteboard *pboard, NSString **error,  NSAttributedString **outStr);
 static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
+{
+	return ConvertFromPasteboardWithAttributedOut(pboard, error, NULL);
+}
+
+NSString *ConvertFromPasteboardWithAttributedOut(NSPasteboard *pboard, NSString **error,  NSAttributedString **outStr)
 {
 	NSAttributedString *attrStr = nil;
 	NSArray *types = [pboard types];
@@ -84,14 +90,24 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 	} else if ([types containsObject:NSPasteboardTypeHTML]) {
 		attrStr = [[NSAttributedString alloc] initWithHTML:[pboard dataForType:NSPasteboardTypeHTML] documentAttributes:NULL];
 	} else if ([types containsObject:NSPasteboardTypeString]){
-		return [pboard stringForType:NSPasteboardTypeString];
+		NSString *theStr = [pboard stringForType:NSPasteboardTypeString];
+		if (outStr) {
+			*outStr = AUTORELEASEOBJ([[NSAttributedString alloc] initWithString:theStr]);
+		}
+		return theStr;
 	} else {
 		if (error) {
 			*error = @"Incompatible pasteboard sent";
 		}
+		if (outStr) {
+			*outStr = nil;
+		}
 		return nil;
 	}
 	
+	if (outStr) {
+		*outStr = attrStr;
+	}
 
 	return [AUTORELEASEOBJ(attrStr) bbcodeRepresentationWithOptions:GetBBEncoderDefaults()];
 }
@@ -109,12 +125,14 @@ static NSString *ConvertFromPasteboard(NSPasteboard *pboard, NSString **error)
 
 - (void)convertSelected:(NSPasteboard*)pboard userData:(NSString *)userData error:(NSString **)error
 {
-	NSString *theString = ConvertFromPasteboard(pboard, error);
+	NSAttributedString *outStr = nil;
+	NSString *theString = ConvertFromPasteboardWithAttributedOut(pboard, error, &outStr);
 	if (theString) {
 		NSPasteboard *tmpPaste = [NSPasteboard generalPasteboard];
 		[tmpPaste clearContents];
 		[tmpPaste writeObjects:@[theString]];
 		//NSBeginAlertSheet(@"BBCode in Pasteboard", nil, nil, nil, window, nil, NULL, NULL, NULL, @"The selected text has been copied to the pasteboard.");
+		self.inputString = outStr;
 	}
 }
 
