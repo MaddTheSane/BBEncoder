@@ -14,6 +14,7 @@
 		55947F271A48CCB300DB6974 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55947F251A48CCB300DB6974 /* MainMenu.xib */; };
 		55947F331A48CCB300DB6974 /* MarkUp_EncoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55947F321A48CCB300DB6974 /* MarkUp_EncoderTests.m */; };
 		55947F3D1A48CD6A00DB6974 /* MarkDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947F3C1A48CD6A00DB6974 /* MarkDown.swift */; };
+		55947F401A48D11900DB6974 /* MUEBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 55947F3F1A48D11900DB6974 /* MUEBBCode.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A54A328D16364A6400663DF2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A54A328B16364A6400663DF2 /* Credits.rtf */; };
@@ -49,6 +50,8 @@
 		55947F3A1A48CCC900DB6974 /* MUEncoderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUEncoderProtocol.h; sourceTree = "<group>"; };
 		55947F3B1A48CD6900DB6974 /* MarkUp Encoder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarkUp Encoder-Bridging-Header.h"; sourceTree = "<group>"; };
 		55947F3C1A48CD6A00DB6974 /* MarkDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkDown.swift; sourceTree = "<group>"; };
+		55947F3E1A48D11900DB6974 /* MUEBBCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUEBBCode.h; sourceTree = "<group>"; };
+		55947F3F1A48D11900DB6974 /* MUEBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUEBBCode.m; sourceTree = "<group>"; };
 		55AB40F917C6F7CE00DB019C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		55AB40FB17C6F7CE00DB019C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		55AB40FC17C6F7CE00DB019C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,6 +162,8 @@
 				55947F1F1A48CCB300DB6974 /* AppDelegate.m */,
 				55947F3B1A48CD6900DB6974 /* MarkUp Encoder-Bridging-Header.h */,
 				55947F3C1A48CD6A00DB6974 /* MarkDown.swift */,
+				55947F3E1A48D11900DB6974 /* MUEBBCode.h */,
+				55947F3F1A48D11900DB6974 /* MUEBBCode.m */,
 				55947F231A48CCB300DB6974 /* Images.xcassets */,
 				55947F251A48CCB300DB6974 /* MainMenu.xib */,
 				55947F1C1A48CCB300DB6974 /* Supporting Files */,
@@ -332,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55947F401A48D11900DB6974 /* MUEBBCode.m in Sources */,
 				55947F221A48CCB300DB6974 /* main.m in Sources */,
 				55947F201A48CCB300DB6974 /* AppDelegate.m in Sources */,
 				55947F3D1A48CD6A00DB6974 /* MarkDown.swift in Sources */,
@@ -420,6 +426,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -456,6 +463,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

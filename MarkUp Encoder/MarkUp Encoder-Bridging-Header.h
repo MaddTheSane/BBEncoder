@@ -3,3 +3,4 @@
 //
 
 #import "MUEncoderProtocol.h"
+#import "MUEBBCode.h"
