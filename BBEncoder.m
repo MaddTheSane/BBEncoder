@@ -9,11 +9,11 @@
 #import "BBEncoder.h"
 
 @interface NSColor (BBEncoder)
-- (NSString *)bbcodeRepresentation;
+@property (readonly, copy) NSString *bbcodeRepresentation;
 @end
 
 @interface NSFont (BBEncoder)
-- (int)bbcodeSize;
+@property (readonly) int bbcodeSize;
 @end
 
 @implementation NSColor (BBEncoder)
@@ -95,7 +95,7 @@
 			attrs = [self attributesAtIndex:NSMaxRange(range) longestEffectiveRange:&range inRange:maxRange];
 			NSMutableArray *tags = [[NSMutableArray alloc] initWithCapacity:[attrs count]];
 			for (NSString *attributeName in attrs) {
-				id value = [attrs objectForKey:attributeName];
+				id value = attrs[attributeName];
 				if ([attributeName isEqualToString:NSFontAttributeName]) {
 					NSFont *font = (NSFont *)value;
 					NSFontTraitMask traits = [[NSFontManager sharedFontManager] traitsOfFont:font];

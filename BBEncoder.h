@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, BBEncoderOptions) {
 @interface NSAttributedString (BBEncoder)
 
 //This uses enclosed code tags, replace tabs with spaces, use full-word strike, and font sizes
-- (NSString *)bbcodeRepresentation;
+@property (readonly, copy) NSString *bbcodeRepresentation;
 - (NSString *)bbcodeRepresentationWithOptions:(BBEncoderOptions)options;
 
 @end

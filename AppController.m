@@ -47,13 +47,11 @@ static BBEncoderOptions GetBBEncoderDefaults()
 + (void)initialize
 {
 	[[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:
-	 [NSDictionary dictionaryWithObjectsAndKeys:
-	  @YES, PREFS_ENCLOSE_IN_CODE_TAGS,
-	  @YES, PREFS_REPLACE_TABS_WITHS_SPACES,
-	  @YES, PREFS_USE_STRIKE_FULL_WORD,
-	  @YES, PREFS_USE_SIZE,
-	  @NO, PREFS_USE_POINT_SIZE,
-	  nil]];
+	 @{PREFS_ENCLOSE_IN_CODE_TAGS: @YES,
+	   PREFS_REPLACE_TABS_WITHS_SPACES: @YES,
+	   PREFS_USE_STRIKE_FULL_WORD: @YES,
+	   PREFS_USE_SIZE: @YES,
+	   PREFS_USE_POINT_SIZE: @NO}];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notif
