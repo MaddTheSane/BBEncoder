@@ -5,7 +5,6 @@
 
 #import "AppController.h"
 #import "BBEncoder.h"
-#import "ARCBridge.h"
 
 #define PREFS_ENCLOSE_IN_CODE_TAGS		@"EncloseInCodeTags"
 #define PREFS_REPLACE_TABS_WITHS_SPACES	@"ReplaceTabsWithSpaces"
@@ -13,11 +12,10 @@
 #define PREFS_USE_SIZE					@"UseSize"
 #define PREFS_USE_POINT_SIZE			@"UsePointSize"
 
-enum {
+typedef NS_ENUM(NSUInteger, BBInput) {
 	BBInputFormatted,
 	BBInputHTML,
 };
-typedef NSUInteger BBInput;
 
 static BBEncoderOptions GetBBEncoderDefaults()
 {
@@ -42,7 +40,7 @@ static BBEncoderOptions GetBBEncoderDefaults()
 }
 
 @implementation AppController
-
+@synthesize window;
 @synthesize inputString;
 @synthesize bbcode;
 
@@ -92,7 +90,7 @@ NSString *ConvertFromPasteboardWithAttributedOut(NSPasteboard *pboard, NSString 
 	} else if ([types containsObject:NSPasteboardTypeString]){
 		NSString *theStr = [pboard stringForType:NSPasteboardTypeString];
 		if (outStr) {
-			*outStr = AUTORELEASEOBJ([[NSAttributedString alloc] initWithString:theStr]);
+			*outStr = [[NSAttributedString alloc] initWithString:theStr];
 		}
 		return theStr;
 	} else {
@@ -109,7 +107,7 @@ NSString *ConvertFromPasteboardWithAttributedOut(NSPasteboard *pboard, NSString 
 		*outStr = attrStr;
 	}
 
-	return [AUTORELEASEOBJ(attrStr) bbcodeRepresentationWithOptions:GetBBEncoderDefaults()];
+	return [attrStr bbcodeRepresentationWithOptions:GetBBEncoderDefaults()];
 }
 
 - (void)replaceSelected:(NSPasteboard*)pboard userData:(NSString *)userData error:(NSString **)error

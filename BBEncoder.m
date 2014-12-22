@@ -7,7 +7,6 @@
 //  See included LICENSE.txt.
 
 #import "BBEncoder.h"
-#import "ARCBridge.h"
 
 @interface NSColor (BBEncoder)
 - (NSString *)bbcodeRepresentation;
@@ -83,7 +82,6 @@
 - (NSString *)bbcodeRepresentationWithOptions:(BBEncoderOptions)options
 {
 	NSMutableString *output = [[NSMutableString alloc] initWithCapacity:self.string.length];
-	AUTORELEASEOBJNORETURN(output);
 	@autoreleasepool {
 		NSRange maxRange = NSMakeRange(0, [self length]);
 		NSRange range = NSMakeRange(0, 0);
@@ -139,6 +137,9 @@
 							[output appendFormat:@"[%@]", BBTAG_CENTER];
 							[tags addObject:BBTAG_CENTER];
 							break;
+							
+							default:
+							break;
 					}
 				} else if ([attributeName isEqualToString:NSStrikethroughStyleAttributeName]) {
 					NSNumber *strikeNum = (NSNumber *)value;
@@ -155,7 +156,6 @@
 			for (NSString *tag in [tags reverseObjectEnumerator]) {
 				[output appendFormat:@"[/%@]", tag];
 			}
-			RELEASEOBJ(tags);
 		} while (NSMaxRange(range) < maxRange.location + maxRange.length);
 		
 		if (options & BBEncoderReplaceTabsWithSpaces) {
