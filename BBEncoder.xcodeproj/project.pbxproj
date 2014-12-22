@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		55947F201A48CCB300DB6974 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55947F1F1A48CCB300DB6974 /* AppDelegate.m */; };
+		55947F221A48CCB300DB6974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55947F211A48CCB300DB6974 /* main.m */; };
+		55947F241A48CCB300DB6974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55947F231A48CCB300DB6974 /* Images.xcassets */; };
+		55947F271A48CCB300DB6974 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55947F251A48CCB300DB6974 /* MainMenu.xib */; };
+		55947F331A48CCB300DB6974 /* MarkUp_EncoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55947F321A48CCB300DB6974 /* MarkUp_EncoderTests.m */; };
+		55947F3D1A48CD6A00DB6974 /* MarkDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947F3C1A48CD6A00DB6974 /* MarkDown.swift */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A54A328D16364A6400663DF2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A54A328B16364A6400663DF2 /* Credits.rtf */; };
@@ -16,10 +22,33 @@
 		A56CB95B12F4FBDC008E86A2 /* BBEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CB95912F4FBDC008E86A2 /* BBEncoder.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		55947F2D1A48CCB300DB6974 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55947F191A48CCB300DB6974;
+			remoteInfo = "MarkUp Encoder";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55947F1A1A48CCB300DB6974 /* MarkUp Encoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MarkUp Encoder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55947F1D1A48CCB300DB6974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55947F1E1A48CCB300DB6974 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		55947F1F1A48CCB300DB6974 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		55947F211A48CCB300DB6974 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55947F231A48CCB300DB6974 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		55947F261A48CCB300DB6974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		55947F2C1A48CCB300DB6974 /* MarkUp EncoderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarkUp EncoderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55947F311A48CCB300DB6974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55947F321A48CCB300DB6974 /* MarkUp_EncoderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarkUp_EncoderTests.m; sourceTree = "<group>"; };
+		55947F3A1A48CCC900DB6974 /* MUEncoderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUEncoderProtocol.h; sourceTree = "<group>"; };
+		55947F3B1A48CD6900DB6974 /* MarkUp Encoder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarkUp Encoder-Bridging-Header.h"; sourceTree = "<group>"; };
+		55947F3C1A48CD6A00DB6974 /* MarkDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkDown.swift; sourceTree = "<group>"; };
 		55AB40F917C6F7CE00DB019C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		55AB40FB17C6F7CE00DB019C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		55AB40FC17C6F7CE00DB019C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -34,6 +63,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55947F171A48CCB300DB6974 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55947F291A48CCB300DB6974 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* BBEncoder.app */,
+				55947F1A1A48CCB300DB6974 /* MarkUp Encoder.app */,
+				55947F2C1A48CCB300DB6974 /* MarkUp EncoderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +115,8 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				55947F1B1A48CCB300DB6974 /* MarkUp Encoder */,
+				55947F2F1A48CCB300DB6974 /* MarkUp EncoderTests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -104,6 +151,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		55947F1B1A48CCB300DB6974 /* MarkUp Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				55947F3A1A48CCC900DB6974 /* MUEncoderProtocol.h */,
+				55947F1E1A48CCB300DB6974 /* AppDelegate.h */,
+				55947F1F1A48CCB300DB6974 /* AppDelegate.m */,
+				55947F3B1A48CD6900DB6974 /* MarkUp Encoder-Bridging-Header.h */,
+				55947F3C1A48CD6A00DB6974 /* MarkDown.swift */,
+				55947F231A48CCB300DB6974 /* Images.xcassets */,
+				55947F251A48CCB300DB6974 /* MainMenu.xib */,
+				55947F1C1A48CCB300DB6974 /* Supporting Files */,
+			);
+			path = "MarkUp Encoder";
+			sourceTree = "<group>";
+		};
+		55947F1C1A48CCB300DB6974 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55947F1D1A48CCB300DB6974 /* Info.plist */,
+				55947F211A48CCB300DB6974 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55947F2F1A48CCB300DB6974 /* MarkUp EncoderTests */ = {
+			isa = PBXGroup;
+			children = (
+				55947F321A48CCB300DB6974 /* MarkUp_EncoderTests.m */,
+				55947F301A48CCB300DB6974 /* Supporting Files */,
+			);
+			path = "MarkUp EncoderTests";
+			sourceTree = "<group>";
+		};
+		55947F301A48CCB300DB6974 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55947F311A48CCB300DB6974 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		55AB410117C6F7E700DB019C /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +205,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		55947F191A48CCB300DB6974 /* MarkUp Encoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55947F341A48CCB300DB6974 /* Build configuration list for PBXNativeTarget "MarkUp Encoder" */;
+			buildPhases = (
+				55947F161A48CCB300DB6974 /* Sources */,
+				55947F171A48CCB300DB6974 /* Frameworks */,
+				55947F181A48CCB300DB6974 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MarkUp Encoder";
+			productName = "MarkUp Encoder";
+			productReference = 55947F1A1A48CCB300DB6974 /* MarkUp Encoder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		55947F2B1A48CCB300DB6974 /* MarkUp EncoderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55947F371A48CCB300DB6974 /* Build configuration list for PBXNativeTarget "MarkUp EncoderTests" */;
+			buildPhases = (
+				55947F281A48CCB300DB6974 /* Sources */,
+				55947F291A48CCB300DB6974 /* Frameworks */,
+				55947F2A1A48CCB300DB6974 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55947F2E1A48CCB300DB6974 /* PBXTargetDependency */,
+			);
+			name = "MarkUp EncoderTests";
+			productName = "MarkUp EncoderTests";
+			productReference = 55947F2C1A48CCB300DB6974 /* MarkUp EncoderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8D1107260486CEB800E47090 /* BBEncoder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "BBEncoder" */;
@@ -141,7 +264,17 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MUE;
 				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					55947F191A48CCB300DB6974 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					55947F2B1A48CCB300DB6974 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 55947F191A48CCB300DB6974;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BBEncoder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -152,17 +285,36 @@
 				Japanese,
 				French,
 				German,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* BBEncoder */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* BBEncoder */,
+				55947F191A48CCB300DB6974 /* MarkUp Encoder */,
+				55947F2B1A48CCB300DB6974 /* MarkUp EncoderTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55947F181A48CCB300DB6974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55947F241A48CCB300DB6974 /* Images.xcassets in Resources */,
+				55947F271A48CCB300DB6974 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55947F2A1A48CCB300DB6974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +328,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55947F161A48CCB300DB6974 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55947F221A48CCB300DB6974 /* main.m in Sources */,
+				55947F201A48CCB300DB6974 /* AppDelegate.m in Sources */,
+				55947F3D1A48CD6A00DB6974 /* MarkDown.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55947F281A48CCB300DB6974 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55947F331A48CCB300DB6974 /* MarkUp_EncoderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,11 +358,27 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		55947F2E1A48CCB300DB6974 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55947F191A48CCB300DB6974 /* MarkUp Encoder */;
+			targetProxy = 55947F2D1A48CCB300DB6974 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1DDD58150DA1D0A300B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		55947F251A48CCB300DB6974 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55947F261A48CCB300DB6974 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -208,6 +394,163 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55947F351A48CCB300DB6974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "MarkUp Encoder/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MarkUp Encoder/MarkUp Encoder-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		55947F361A48CCB300DB6974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "MarkUp Encoder/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MarkUp Encoder/MarkUp Encoder-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		55947F381A48CCB300DB6974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "MarkUp EncoderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkUp Encoder.app/Contents/MacOS/MarkUp Encoder";
+			};
+			name = Debug;
+		};
+		55947F391A48CCB300DB6974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "MarkUp EncoderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkUp Encoder.app/Contents/MacOS/MarkUp Encoder";
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -222,7 +565,6 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "BBEncoder-Info.plist";
 				PRODUCT_NAME = BBEncoder;
 			};
@@ -234,6 +576,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -252,6 +595,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -265,6 +609,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55947F341A48CCB300DB6974 /* Build configuration list for PBXNativeTarget "MarkUp Encoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55947F351A48CCB300DB6974 /* Debug */,
+				55947F361A48CCB300DB6974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		55947F371A48CCB300DB6974 /* Build configuration list for PBXNativeTarget "MarkUp EncoderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55947F381A48CCB300DB6974 /* Debug */,
+				55947F391A48CCB300DB6974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "BBEncoder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
