@@ -75,8 +75,8 @@
 
 - (NSString *)bbcodeRepresentation
 {
-	//return [self bbcodeRepresentationWithOptions:(BBEncoderEncloseInCodeTags | BBEncoderReplaceTabsWithSpaces |BBEncoderUseStrikeFullWord |  BBEncoderUseFontSizes)];
-	return [self bbcodeRepresentationWithOptions:15];
+	return [self bbcodeRepresentationWithOptions:(BBEncoderEncloseInCodeTags | BBEncoderReplaceTabsWithSpaces | BBEncoderUseStrikeFullWord |  BBEncoderUseFontSizes)];
+	//return [self bbcodeRepresentationWithOptions:15];
 }
 
 - (NSString *)bbcodeRepresentationWithOptions:(BBEncoderOptions)options

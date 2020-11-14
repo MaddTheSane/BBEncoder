@@ -9,11 +9,11 @@
 import Cocoa
 
 class MarkDown: NSObject, MUEncoderProtocol {
-	class func markupEncodedStringFromAttributedString(attrString: NSAttributedString) -> String? {
+	static func markupEncodedString(from attrString: NSAttributedString) -> String? {
 		return ""
 	}
 	
-	class func markupEncodedStringFromAttributedString(attrString: NSAttributedString!, options: MUEOption) -> String? {
+	static func markupEncodedString(from attrString: NSAttributedString, options: MUEOption) -> String? {
 		return ""
 	}
 }

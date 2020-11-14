@@ -8,7 +8,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-typedef NS_ENUM(NSUInteger, BBEncoderOptions) {
+typedef NS_OPTIONS(NSUInteger, BBEncoderOptions) {
 	BBEncoderEncloseInCodeTags		= (1 << 0),
 	BBEncoderReplaceTabsWithSpaces	= (1 << 1),
 	BBEncoderUseStrikeFullWord		= (1 << 2),
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, BBEncoderOptions) {
 
 @interface NSAttributedString (BBEncoder)
 
-//This uses enclosed code tags, replace tabs with spaces, use full-word strike, and font sizes
+/// This uses enclosed code tags, replace tabs with spaces, use full-word strike, and font sizes
 @property (readonly, copy) NSString *bbcodeRepresentation;
 - (NSString *)bbcodeRepresentationWithOptions:(BBEncoderOptions)options;
 

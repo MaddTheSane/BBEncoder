@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>bbencoder</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.kainjow.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -74,7 +74,7 @@
 				<string>NSHTMLPboardType</string>
 			</array>
 			<key>NSServiceDescription</key>
-			<string>Places the selected formatted text&apos;s BBCode implementation to the default clipboard.</string>
+			<string>Places the selected formatted text's BBCode implementation to the default clipboard.</string>
 		</dict>
 	</array>
 </dict>

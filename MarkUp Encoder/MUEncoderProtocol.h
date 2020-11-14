@@ -14,12 +14,16 @@ typedef NS_OPTIONS(NSUInteger, MUEOption) {
 	MUEOptionUseFontSizes			= (1 << 2),
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol MUEncoderProtocol <NSObject>
 
-+ (NSString*)markupEncodedStringFromAttributedString:(NSAttributedString*)attrString;
++ (nullable NSString*)markupEncodedStringFromAttributedString:(NSAttributedString*)attrString;
 
 @optional
-+ (NSString*)markupEncodedStringFromAttributedString:(NSAttributedString*)attrString options:(MUEOption)options;
++ (nullable NSString*)markupEncodedStringFromAttributedString:(NSAttributedString*)attrString options:(MUEOption)options;
 
 
 @end
+
+NS_ASSUME_NONNULL_END
